@@ -5,6 +5,11 @@ import random
 app = Flask(__name__)
 CORS(app)
 
+# Ruta principal
+@app.route("/", methods=["GET"])
+def home():
+    return "Servidor del Ahorcado funcionando correctamente", 200
+
 # Lista de palabras para el juego
 PALABRAS = ["python", "javascript", "react", "flask", "programacion", "frontend"]
 
@@ -12,10 +17,6 @@ PALABRAS = ["python", "javascript", "react", "flask", "programacion", "frontend"
 palabra_secreta = random.choice(PALABRAS)
 letras_adivinadas = []
 intentos_restantes = 6
-
-@app.route("/", methods=["GET"])
-def home():
-    return "Servidor del Ahorcado funcionando correctamente", 200
 
 @app.route("/reset", methods=["POST"])
 def reset_game():
