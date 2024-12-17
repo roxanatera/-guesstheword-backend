@@ -3,7 +3,7 @@ from flask_cors import CORS
 import random
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Ruta principal
 @app.route("/", methods=["GET"])
